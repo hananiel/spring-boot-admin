@@ -73,18 +73,7 @@ public class UiControllerTest {
 		return MockMvcBuilders
 				.standaloneSetup(
 						new UiController(publicUrl, UiExtensions.EMPTY, UiController.Settings.builder().build()))
-				.setCustomArgumentResolvers(new HandlerMethodArgumentResolver() {
-					@Override
-					public boolean supportsParameter(MethodParameter parameter) {
-						return parameter.getParameterType().equals(Principal.class);
-					}
-
-					@Override
-					public Object resolveArgument(MethodParameter parameter, ModelAndViewContainer mavContainer,
-							NativeWebRequest webRequest, WebDataBinderFactory binderFactory) throws Exception {
-						return null;
-					}
-				}).setCustomHandlerMapping(() -> new AdminControllerHandlerMapping("")).build();
+				.setCustomHandlerMapping(() -> new AdminControllerHandlerMapping("")).build();
 	}
 
 }
